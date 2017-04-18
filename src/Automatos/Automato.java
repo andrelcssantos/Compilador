@@ -142,12 +142,12 @@ public class Automato {
                                 }
                             }
                         }
-                        cadeia = "";
                         estadoInicial = 0;
                         if (cadeia.length() > 1) {
                             nrColuna--;
                         }
                         nrCol = nrColuna;
+                        cadeia = "";
                     }
                     estadoFinal = estadoInicial;
                     cad++;

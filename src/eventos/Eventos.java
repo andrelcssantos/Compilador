@@ -50,7 +50,7 @@ public class Eventos {
     private String sArquivo = null;
     private String sTabTrans = null;
     private StringBuilder texto;
-    private JFileChooser fc = new JFileChooser("D:\\ProjetosNetBeans\\Compiladores");
+    private JFileChooser fc = new JFileChooser(".\\");
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
     private Automato at;
 
