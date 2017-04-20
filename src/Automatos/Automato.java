@@ -97,12 +97,13 @@ public class Automato {
             int estadoFinal = 0;
             int i = 1;
             int nrLine = 1;
+            int nrCol = 0;
+            String cadeia = "";
 
             while ((linha = aqv.readLine()) != null) {
                 int nrColuna = 0;
-                String cadeia = "";
                 int cad = 0;
-                int nrCol = 1;
+                nrCol = 1;
 
                 while (nrColuna < linha.length()) {
                     cadeia += linha.toCharArray()[nrColuna];
@@ -154,7 +155,7 @@ public class Automato {
                     nrColuna++;
                 }
 
-                if (!cadeia.isEmpty()) {
+                if (!cadeia.isEmpty() && estadoInicial != 1) {
                     cad = cadeia.length();
                     String newCadeia = cadeia.substring(0, cad);
                     String token = buscaToken(estadoFinal, newCadeia);
@@ -167,10 +168,22 @@ public class Automato {
                             Tokens.add(new Token(nrLine, nrCol, newCadeia, pr, pr.toString()));
                         }
                     }
+                        estadoInicial = 0;
+                        cadeia = "";
+                }
+                else if (!cadeia.isEmpty() && estadoInicial != 1)
+                {
+                    cadeia += "\n";
                 }
 
                 nrLine++;
             }
+            
+            if(estadoInicial == 1)
+            {
+                Tokens.add(new Token(nrLine, nrCol, "", pr, "ERRO_ComentarioNaoFechado"));
+            }
+            
             Eventos ev = new Eventos();
             ev.salvar(Tokens);
         } catch (Exception ex) {

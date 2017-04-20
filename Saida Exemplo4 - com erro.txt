@@ -1,0 +1,4 @@
+1|1|program|PaRe_program
+1|7|nome2|Iden_nome2
+1|12|;|SEsp_;
+22|1||ERRO_ComentarioNaoFechado
